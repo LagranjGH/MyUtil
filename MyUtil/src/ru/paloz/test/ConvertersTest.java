@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import ru.paloz.common.CollectionConverter;
 
-public class ConvertersTester {
+public class ConvertersTest {
 
 	@Test
 	public void testCollectionConverterInt() {
