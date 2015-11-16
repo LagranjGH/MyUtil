@@ -42,12 +42,13 @@ public class CollectionConverter {
 		return null;
 	}
 	
-	public static List<Integer> arrayToIntList(Integer[] args) {
-		List<Integer> result = new ArrayList<>();
+	public static List<Integer> arrayToIntList(Integer[] args) {	
 		if (args != null) {
+			List<Integer> result = new ArrayList<>(args.length);
 			arrToList(result, args);
+			return result;
 		}
-		return result;	
+		return null;	
 	}
 	
 	public static List<Integer> arrayToIntList(int ...args) {
@@ -102,18 +103,19 @@ public class CollectionConverter {
 	}
 	
 	public static List<Long> arrayToLongList(Long[] args) {
-		List<Long> result = new ArrayList<>();
 		if (args != null) {
+			List<Long> result = new ArrayList<>(args.length);
 			arrToList(result, args);
+			return result;
 		}
-		return result;	
+		return null;	
 	}
 	
 	public static List<Long> arrayToLongList(long ...args) {
 		return arrayToLongList(longPrimToRef(args));
 	}
 	
-	public static List<Integer> arrayTolongList() {
+	public static List<Long> arrayToLongList() {
 		return new ArrayList<>();
 	}
 	
@@ -137,4 +139,82 @@ public class CollectionConverter {
 		return null;
 	}
 	
+	//=======================DOUBLE=============================
+	public static Double[] doublePrimToRef(double ...args) {
+		if (args != null) {
+			Double[] result = new Double[args.length];
+			for (int i = 0; i < args.length; i++) {
+				result[i] = new Double(args[i]);
+			}
+			return result;
+		}
+		return null;
+	}
+	
+	public static double[] doubleRefToPrim(Double ...args) {
+		if (args != null) {
+			double[] result = new double[args.length];
+			for (int i = 0; i < args.length; i++) {
+				result[i] = args[i].doubleValue();
+			}
+			return result;
+		}
+		return null;
+	}
+	
+	public static List<Double> arrayToDoubleList(Double[] args) {
+		if (args != null) {
+			List<Double> result = new ArrayList<>(args.length);
+			arrToList(result, args);
+			return result;
+		}
+		return null;	
+	}
+	
+	public static List<Double> arrayToDoubleList(double ...args) {
+		return arrayToDoubleList(doublePrimToRef(args));
+	}
+	
+	public static List<Double> arrayToDoubleList() {
+		return new ArrayList<>();
+	}
+	
+	public static Double[] listToRefDoubleArray(List<Double> list) {
+		if (list != null) {
+			Double[] result = new Double[list.size()];
+			listToArr(list, result);
+			return result;
+		}
+		return null;
+	}
+	
+	public static double[] listToPrimDoubleArray(List<Double> list) {
+		if (list != null) {
+			double[] result = new double[list.size()];
+			for (int i = 0; i < list.size(); i++) {
+				result[i] = list.get(i);
+			}
+			return result;
+		}
+		return null;
+	}
+	
+	//======================STRING===========================
+	public static List<String> arrayToStringList(String ...args) {
+		if (args != null) {
+			List<String> result = new ArrayList<>(args.length);
+			arrToList(result, args);
+			return result;
+		}
+		return null;	
+	}
+	
+	public static String[] listToRefStringArray(List<String> list) {
+		if (list != null) {
+			String[] result = new String[list.size()];
+			listToArr(list, result);
+			return result;
+		}
+		return null;
+	}
 }
